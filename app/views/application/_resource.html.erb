@@ -1,0 +1,21 @@
+<%= content_tag :tr, data: { url: resource_path(resource.object) } do %>
+  <% resource.attributes_for(:index).each do |attribute| %>
+    <%= resource.send(attribute) %>
+  <% end %>
+
+  <td class="actions">
+    <div class="btn-group">
+      <%= link_to resource_path(resource.object), method: :delete, data: { confirm: 'Delete this item?' }, class: 'btn btn-xs btn-danger' do %>
+        <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
+
+      <%= link_to edit_resource_path(resource.object), class: 'btn btn-xs btn-success' do %>
+        <span class="glyphicon glyphicon-edit"></span>
+      <% end %>
+
+      <%= link_to resource_path(resource.object), class: 'btn btn-xs btn-info' do %>
+        <span class="glyphicon glyphicon-link"></span>
+      <% end %>
+    </div>
+  </td>
+<% end %>

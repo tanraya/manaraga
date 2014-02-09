@@ -1,0 +1,23 @@
+<h1>
+  <%= resource_class.name.titleize %>
+  <%= link_to "Add new", new_resource_path, class: 'btn btn-success btn-md pull-right' %>
+</h1>
+
+<% if collection.any? %>
+  <table border="0" class="<%= collection.table_html_classes %>">
+    <thead>
+      <tr>
+        <% collection.attributes_for(:index).each do |attribute| %>
+          <th><%= attribute %></th>
+        <% end %>
+
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'resource', collection: collection, as: :resource %>
+    </tbody>
+  </table>
+
+  <%= paginate(collection) %>
+<% end %>

@@ -1,0 +1,9 @@
+<h1><%= resource %></h1>
+
+<ul>
+  <% resource.attributes_for(:show).each do |attribute| %>
+    <li>
+      <%= attribute %>: <%= resource.send(attribute) %>
+    </li>
+  <% end %>
+</ul>

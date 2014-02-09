@@ -1,0 +1,12 @@
+<%#= raise resource.form_attributes.inspect%>
+<%= simple_form_for resource.object do |f| %>
+  <% resource.attributes_for(:form).each do |attribute| %>
+    <% if resource.association?(attribute) %>
+      <%= f.association(attribute) %>
+    <% else %>
+      <%= f.input(attribute) %>
+    <% end %>
+  <% end %>
+
+  <%= f.button :submit %>
+<% end %>
