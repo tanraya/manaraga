@@ -7,7 +7,7 @@ module Manaraga
       delegate :current_page, :total_pages, :limit_value
 
       def decorator_class
-        Manaraga::Decorator::IndexDecorator
+        configuration.index_decorator_class
       end
 
       def resource_class
@@ -15,7 +15,7 @@ module Manaraga
       end
 
       def configuration
-        h.controller.manaraga.configuration
+        h.controller.manaraga_configuration
       end
 
       def table_html_classes

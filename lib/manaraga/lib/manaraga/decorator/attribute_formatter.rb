@@ -8,14 +8,14 @@ module Manaraga
         value = object.send(attribute)
 
         if attribute == :id
-          return h.link_to value, h.resource_path(object)
+          return h.link_to value.to_s, h.resource_path(object)
         end
 
         case value
         when TrueClass, FalseClass
           I18n.t("simple_form.#{value ? 'yes' : 'no'}")
         when NilClass
-          '-'
+          h.raw('&mdash;')
         when Date, Time, DateTime, ActiveSupport::TimeWithZone
           h.content_tag :time, I18n.l(value, format: :short)
         when Float, BigDecimal
@@ -30,7 +30,7 @@ module Manaraga
           elsif value.respond_to?(:join)
             value.join(', ')
           elsif value.to_s.empty?
-            '-'
+            h.raw('&mdash;')
           else # String
             value.to_s
           end

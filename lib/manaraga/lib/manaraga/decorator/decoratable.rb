@@ -15,7 +15,7 @@ module Manaraga
       protected
 
       def configuration
-        h.controller.manaraga.configuration
+        h.controller.manaraga_configuration
       end
 
       def resource_class

@@ -1,3 +1,13 @@
+PATH
+  remote: ~/sandbox/open-source/admin/dsl/lib/manaraga
+  specs:
+    manaraga (0.0.1)
+      draper
+      inherited_resources
+      kaminari
+      rails (>= 3.0)
+      simple_form
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -89,6 +99,7 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     request_store (1.0.5)
+    require_reloader (0.2.0)
     responders (1.0.0)
       railties (>= 3.2, < 5)
     sass (3.2.14)
@@ -132,15 +143,13 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.1.0)
   coffee-rails (~> 4.0.0)
-  draper
-  inherited_resources
   jbuilder (~> 1.2)
   jquery-rails
-  kaminari
+  manaraga!
   rails (= 4.0.2)
+  require_reloader
   sass-rails (~> 4.0.0)
   sdoc
-  simple_form
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)

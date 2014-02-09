@@ -26,7 +26,8 @@ module Manaraga
 
     def initialize
       @config = OpenStruct.new(
-        #decorate_collection_for: [:index],
+        decorator_class: Manaraga::Decorator::DefaultDecorator,
+        index_decorator_class: Manaraga::Decorator::IndexDecorator,
         decorate_resource_for: [:destroy, :create, :update],
 
         # Automatically translate foreign keys columns to associations
@@ -37,15 +38,5 @@ module Manaraga
     def method_missing(m, *args, &block)
       config.send(m, *args, &block)
     end
-
-    #def self.configure
-    #  yield self
-    #end
   end
 end
-
-=begin
-Manaraga::Configuration.configure do |config|
-  config.display_heading = true
-end
-=end

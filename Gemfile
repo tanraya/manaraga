@@ -26,11 +26,9 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-gem 'inherited_resources'
-gem 'draper'
-gem 'kaminari'
 gem 'bootstrap-sass', '~> 3.1.0'
-gem 'simple_form'
+gem 'require_reloader'
+gem 'manaraga', path: '~/sandbox/open-source/admin/dsl/lib/manaraga'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

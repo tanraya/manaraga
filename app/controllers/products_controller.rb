@@ -1,8 +1,4 @@
 class ProductsController < ApplicationController
-  #include Manaraga::InheritedResources
-  #include Manaraga::DSL
-
-
   include Manaraga::DSL
 
   manaraga do
@@ -19,8 +15,8 @@ class ProductsController < ApplicationController
       #paginate per: 20
       #paginate false
 
-      #decorator Manaraga::Decorator::CollectionDecorator
-      #foreign_key_as_association false
+      foreign_key_as_association true
+      decorator_class ProductDecorator
 
       column :name
       column :price

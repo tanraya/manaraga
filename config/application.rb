@@ -20,7 +20,8 @@ module Dsl
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/app/decorators)
     #config.autoload_paths += %W(#{config.root}/app/manaraga/**)
+    #gem 'manaraga', path: Rails.root.join('lib', 'manaraga')
   end
 end

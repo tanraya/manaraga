@@ -5,10 +5,6 @@ module Manaraga
         inherit_resources
         has_scope :page, default: 1
 
-        #defaults resource_class:  Product::Property#,
-        #   collection_name: 'product_properties',
-        #   instance_name:   'product_property'
-
         alias_method :collection_without_decorator, :collection
         alias_method :collection,                   :collection_with_decorator
         alias_method :resource_without_decorator,   :resource
@@ -20,7 +16,7 @@ module Manaraga
       collection = collection_without_decorator
 
       # Automatically includes associations
-      if self.manaraga.configuration.foreign_key_as_association
+      if self.manaraga_configuration.foreign_key_as_association
         collection = include_associations_for(collection)
       end
 
@@ -28,10 +24,10 @@ module Manaraga
     end
 
     def resource_with_decorator
-      if self.manaraga.configuration.decorate_resource_for.include?(action_name.to_sym)
+      if self.manaraga_configuration.decorate_resource_for.include?(action_name.to_sym)
         resource_without_decorator
       else
-        Manaraga::Decorator::DefaultDecorator.decorate(resource_without_decorator)
+        self.manaraga_configuration.decorator_class.decorate(resource_without_decorator)
       end
     end
 

@@ -1,15 +1,10 @@
 class Product::PropertiesController < ApplicationController
-
-  include Manaraga::InheritedResources
-
-  defaults resource_class:  Product::Property,
-           collection_name: 'properties',
-           instance_name:   'property',
-           route_prefix:    ''
-
-  belongs_to :product
-
   include Manaraga::DSL
+
+  manaraga do
+    defaults route_prefix: ''
+    belongs_to :product
+  end
 
   #def build_resource_params
   #  [params.fetch(:product_property, {}).permit(:name, :value, :product_id)]
