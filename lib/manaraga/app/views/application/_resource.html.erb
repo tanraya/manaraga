@@ -5,16 +5,22 @@
 
   <td class="actions">
     <div class="btn-group">
-      <%= link_to resource_path(resource.object), method: :delete, data: { confirm: 'Delete this item?' }, class: 'btn btn-xs btn-danger' do %>
-        <span class="glyphicon glyphicon-trash"></span>
+      <% if manaraga_user.can_destroy?(resource) %>
+        <%= link_to resource_path(resource.object), method: :delete, data: { confirm: 'Delete this item?' }, class: 'btn btn-xs btn-danger' do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
       <% end %>
 
-      <%= link_to edit_resource_path(resource.object), class: 'btn btn-xs btn-success' do %>
-        <span class="glyphicon glyphicon-edit"></span>
+      <% if manaraga_user.can_edit?(resource) %>
+        <%= link_to edit_resource_path(resource.object), class: 'btn btn-xs btn-success' do %>
+          <span class="glyphicon glyphicon-edit"></span>
+        <% end %>
       <% end %>
 
-      <%= link_to resource_path(resource.object), class: 'btn btn-xs btn-info' do %>
-        <span class="glyphicon glyphicon-link"></span>
+      <% if manaraga_user.can_read?(resource) %>
+        <%= link_to resource_path(resource.object), class: 'btn btn-xs btn-info' do %>
+          <span class="glyphicon glyphicon-link"></span>
+        <% end %>
       <% end %>
     </div>
   </td>

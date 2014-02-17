@@ -1,6 +1,9 @@
 <h1>
   <%= resource_class.name.titleize %>
-  <%= link_to "Add new", new_resource_path, class: 'btn btn-success btn-md pull-right' %>
+
+  <% if manaraga_user.can_create?(resource_class) %>
+    <%= link_to "Add new", new_resource_path, class: 'btn btn-success btn-md pull-right' %>
+  <% end %>
 </h1>
 
 <% if collection.any? %>

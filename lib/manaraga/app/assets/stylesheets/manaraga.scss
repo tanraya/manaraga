@@ -1,18 +1,19 @@
 table.manaraga {
   width: 100%;
 
-  tr {
-    cursor: pointer;
+  tbody {
+    tr {
+      cursor: pointer;
 
-    td {
+      td {
+        a {
+          display: block;
+          height: 100%;
+        }
 
-      a {
-        display: block;
-        height: 100%;
-      }
-
-      &.actions {
-        width: 85px;
+        &.actions {
+          width: 85px;
+        }
       }
     }
   }

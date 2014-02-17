@@ -2,49 +2,20 @@ class ProductsController < ApplicationController
   include Manaraga::DSL
 
   manaraga do
-    # Here we able to change InheritedResources behavior
-    #defaults resource_class:  Product::Property,
-    #   collection_name: 'product_properties',
-    #   instance_name:   'product_property'
-
     index do
-      #sort except:  %w(description company),
-      #     order:   :asc,
-      #     default: :id
-
-      #paginate per: 20
-      #paginate false
-
+      columns except: %w(price)
       foreign_key_as_association true
-      decorator_class ProductDecorator
-
-      column :name
-      column :price
-      column :description
-      column :created_at
-      column :company
-      #columns except: %w(price)
-      #columns only: %w(price)
-      #columns %w(name price)
     end
 
     show do
-      column :name
-      column :price
-      column :description
+      columns except: %w(name price description)
     end
 
     form do
-      column :name
-      column :price
-      column :description
+      #columns except: %w(name price description)
+      columns %w(name price description)
     end
   end
-
-=begin
-
-=end
-
 
   def by_rubric
     @products = collection_without_decorator.where('id < 15').limit(10)

@@ -1,5 +1,3 @@
-require 'ostruct'
-
 module Manaraga
   module DSL
     autoload :Base,  'manaraga/dsl/base'
@@ -13,16 +11,17 @@ module Manaraga
 
       base.class_eval do
         class_attribute :manaraga_configuration
-        self.manaraga_configuration = Manaraga::Configuration.new
+        self.manaraga_configuration = Manaraga.configuration.dup
       end
     end
 
     module ClassMethods
       def manaraga(&block)
-        self.class_eval(&block) if block_given?
         index
         show
         form
+
+        self.class_eval(&block) if block_given?
       end
 
       # Example:
@@ -35,18 +34,30 @@ module Manaraga
       #   column :company
       # end
       def index(*args, &block)
-        index_dsl = Manaraga::DSL::Index.new(resource_class, self.manaraga_configuration, args.extract_options!, &block)
-        self.manaraga_configuration.index_columns = index_dsl.columns
+        self.manaraga_configuration.index_columns = Manaraga::DSL::Index.new(
+          resource_class,
+          self.manaraga_configuration,
+          args.extract_options!,
+          &block
+        ).columns
       end
 
       def show(*args, &block)
-        show_dsl = Manaraga::DSL::Show.new(resource_class, self.manaraga_configuration, args.extract_options!, &block)
-        self.manaraga_configuration.show_columns = show_dsl.columns
+        self.manaraga_configuration.show_columns = Manaraga::DSL::Show.new(
+          resource_class,
+          self.manaraga_configuration,
+          args.extract_options!,
+          &block
+        ).columns
       end
 
       def form(*args, &block)
-        form_dsl = Manaraga::DSL::Form.new(resource_class, self.manaraga_configuration, args.extract_options!, &block)
-        self.manaraga_configuration.form_columns = form_dsl.columns
+        self.manaraga_configuration.form_columns = Manaraga::DSL::Form.new(
+          resource_class,
+          self.manaraga_configuration,
+          args.extract_options!,
+          &block
+        ).columns
       end
     end
   end

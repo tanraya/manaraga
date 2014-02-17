@@ -1,10 +1,6 @@
 module Manaraga
   module DSL
     class Index < Base
-      def columns
-        @cached_columns ||= ([:id] + @columns.map(&:to_sym)).uniq
-      end
-
       def sort(options)
 
       end

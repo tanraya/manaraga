@@ -1,6 +1,6 @@
 $ ->
   manaragaTables = $('table.manaraga')
-  manaragaTables.on 'click.manaraga', 'tr', (e) ->
+  manaragaTables.on 'click.manaraga', 'tbody tr', (e) ->
     if e.target.nodeName isnt 'A'
       location.href = $(this).data('url')
 

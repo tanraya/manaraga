@@ -1,5 +1,6 @@
 Dsl::Application.configure do
-  RequireReloader.watch_local_gems!
+  #RequireReloader.watch_local_gems!
+  #RequireReloader.watch :manaraga, path: 'config/initializers'
 
   # Settings specified here will take precedence over those in config/application.rb.
 

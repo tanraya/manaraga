@@ -5,7 +5,7 @@ module Manaraga
       # form_attributes
       # А так же form_columns, index_columns и тп
       def attributes_for(name)
-        #raise convert_to_attributes(configuration.index_columns).inspect
+        #raise configuration.index_columns.inspect
         if configuration.foreign_key_as_association
           {
             index: convert_to_attributes(configuration.index_columns),

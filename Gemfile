@@ -28,6 +28,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'require_reloader'
+gem 'devise'
 gem 'manaraga', path: '~/sandbox/open-source/admin/dsl/lib/manaraga'
 
 group :doc do
